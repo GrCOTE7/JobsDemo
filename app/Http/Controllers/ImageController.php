@@ -6,7 +6,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ImageFormRequest;
+use App\Http\Tools\Gc7;
 use Intervention\Image\ImageManager;
 
 class ImageController extends Controller
@@ -16,7 +17,7 @@ class ImageController extends Controller
 		return view('image.create');
 	}
 
-	public function store(Request $request)
+	public function store(ImageFormRequest $request)
 	{
 		$uploadedFile = $request->file('file');
 
@@ -26,16 +27,28 @@ class ImageController extends Controller
 		$file = $uploadedFile->move(public_path('uploads'), $uploadedFile->getClientOriginalName());
 
 		// dd($file);
-		$formats = [150, 500, 1000, 1200, 1400];
+		$formats = [150, 300, 500, 1000, 1200, 1400, 1500];
 		// dd($formats);
+
+		// $format  = 1000;
+		// $manager = new ImageManager(['driver' => 'gd']);
+		// dd($manager);
 
 		foreach ($formats as $format) {
 			$manager = new ImageManager(['driver' => 'gd']);
 			$manager->make($file->getRealPath())
 				->fit($format, $format)
 				->rotate(45)
-				->save("/{$file->getBasename()}_{$format}x{$format}.jpg");
+				->save(public_path('uploads') . '/' . substr($file->getBasename(), 0, -4) . "_{$format}x{$format}.jpg");
 		}
+
+		// dd($file->getRealPath());
+
+		// $newName = substr($file->getBasename(), -4);
+
+		// Gc7::aff($newName);
+
+		// dd("/{strstr({$file->getBasename}(),-4)}_{$format}x{$format}.jpg");
 
 		return to_route('image.create')->with(
 			'success',
