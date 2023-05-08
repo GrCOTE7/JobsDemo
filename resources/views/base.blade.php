@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -18,6 +18,8 @@
 
     @include('partials.nav')
 
+    @include ('shared.flash')
+    
     @yield('content')
 
     <script src="../../../js/bootstrap530-a3.min.js"></script>
