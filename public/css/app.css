@@ -1,0 +1,16 @@
+.justify {
+    text-align: justify
+}
+
+
+.card {
+    box-shadow: -5px 5px 12px black;
+    border-top: 2px solid #fff;
+    border-right: 3px solid #fff;
+}
+
+.sold {
+    text-decoration: line-through;
+    border-top: 2px solid red;
+    border-right: 3px solid red;
+}
