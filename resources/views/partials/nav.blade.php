@@ -17,11 +17,16 @@
                     <a @class(['nav-link', 'active' => str_contains($route, 'property')]) aria-current="page" href="{{ route('property.index') }}">Biens</a>
                 </li>
             </ul> --}}
+            <div class="navbar-nav">
+                <div class="nav-item">
+                    <a @class(['nav-link', 'active' => str_contains($route, 'test')]) aria-current="page" href="{{ route('image.test') }}">Test</a>
+                </div>
+            </div>
             <div class="ms-auto">
                 @auth
                 <div class="navbar-nav">
                     <div class="nav-item">
-                        <a href="/admin/property" class="nav-link">Admin</a>
+                        <a href="/t" class="nav-link">Test</a>
                     </div>
                 </div>
                 @endauth
