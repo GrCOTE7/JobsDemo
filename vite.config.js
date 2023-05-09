@@ -8,14 +8,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/app.js',
             ],
-            refresh: [
-                'routes/**',
-                'resources/views/**',
-                'public/**',
-                'app/**',
-                'lang/**',
-                'config/**',
-            ],
+            refresh: true,
         }),
     ],
 });
