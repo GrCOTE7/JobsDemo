@@ -7,6 +7,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Book;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -24,5 +25,7 @@ class DatabaseSeeder extends Seeder
 			'email'    => 'test@example.com',
 			'password' => Hash::make('0000'),
 		]);
+
+        Book::factory(10)->create('');
 	}
 }
