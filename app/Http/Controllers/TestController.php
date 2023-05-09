@@ -1,23 +1,28 @@
 <?php
 
+/**
+ * (ɔ) GrCOTE7 - 2022-2023
+ */
+
 namespace App\Http\Controllers;
 
 use App\Http\Tools\Gc7;
-use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-    public function test(){
-        $this->Gc7Test();
-        return view('image.create');
-    }
+	public function test()
+	{
+		$this->Gc7Test();
 
-    private function Gc7Test(){
+		return view('image.create');
+	}
 
-        $name0 = 'djkfghjsdghjsd.jpg';
+	private function Gc7Test()
+	{
+		$name0 = 'djkfghjsdghjsd.jpg';
 
-        $newName = "{substr($name0, 0, -4)}";
+		$newName = "substr({$name0}, 0, -4)";
 
-        Gc7::aff($newName);
-    }
+		Gc7::aff($newName);
+	}
 }

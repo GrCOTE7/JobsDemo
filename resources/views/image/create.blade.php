@@ -3,8 +3,11 @@
 @section('title', 'Image')
 
 @section('content')
+
+    {{-- @dump({{ $session }}) --}}
+
     <div class="container vstack gap-2 mt-3">
-        <h1>Uloader an image</h1>
+        <h1>Uploader an image</h1>
 
         <form action="/" method="post" enctype="multipart/form-data">
             @csrf
@@ -18,7 +21,7 @@
                 </div>
                 @enderror
             </div>
-            <button class="btn btn-primary mt-3" type="submit">Soumettre</button>
+            <button class="btn btn-primary mt-3" type="submit">Apply</button>
 
         </form>
     </div>

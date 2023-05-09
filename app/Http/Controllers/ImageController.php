@@ -38,7 +38,7 @@ class ImageController extends Controller
 			$manager = new ImageManager(['driver' => 'gd']);
 			$manager->make($file->getRealPath())
 				->fit($format, $format)
-				->rotate(45)
+				->rotate(215)
 				->save(public_path('uploads') . '/' . substr($file->getBasename(), 0, -4) . "_{$format}x{$format}.jpg");
 		}
 
@@ -50,9 +50,16 @@ class ImageController extends Controller
 
 		// dd("/{strstr({$file->getBasename}(),-4)}_{$format}x{$format}.jpg");
 
+		sleep(7);
+
 		return to_route('image.create')->with(
 			'success',
-			'The image was saved in differents formats'
+			'The image was saved in different formats'
 		);
+
+		// return redirect()->route('image.create')->with(
+		// 	'success',
+		// 	'The image was saved in different formats'
+		// );
 	}
 }
