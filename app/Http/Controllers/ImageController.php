@@ -8,10 +8,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ImageFormRequest;
 use App\Http\Tools\Gc7;
-use Intervention\Image\ImageManager;
+use App\Jobs\ResizeImage;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ImageController extends Controller
+class ImageController extends Controller implements ShouldQueue
 {
+	public $result;
+
 	public function create()
 	{
 		return view('image.create');
@@ -24,7 +27,6 @@ class ImageController extends Controller
 		// dd($uploadedFile);
 		// dd(public_path('uploads'));
 		// dd($uploadedFile->getClientOriginalName());
-		$file = $uploadedFile->move(public_path('uploads'), $uploadedFile->getClientOriginalName());
 
 		// dd($file);
 		$formats = [150, 300, 500, 1000, 1200, 1400, 1500];
@@ -34,14 +36,6 @@ class ImageController extends Controller
 		// $manager = new ImageManager(['driver' => 'gd']);
 		// dd($manager);
 
-		foreach ($formats as $format) {
-			$manager = new ImageManager(['driver' => 'gd']);
-			$manager->make($file->getRealPath())
-				->fit($format, $format)
-				->rotate(215)
-				->save(public_path('uploads') . '/' . substr($file->getBasename(), 0, -4) . "_{$format}x{$format}.jpg");
-		}
-
 		// dd($file->getRealPath());
 
 		// $newName = substr($file->getBasename(), -4);
@@ -50,7 +44,10 @@ class ImageController extends Controller
 
 		// dd("/{strstr({$file->getBasename}(),-4)}_{$format}x{$format}.jpg");
 
-		sleep(7);
+		// sleep(7);
+
+		// $this->dispatch(new ResizeImage($uploadedFile, $formats));
+		$this->result = new ResizeImage($uploadedFile, $formats);
 
 		return to_route('image.create')->with(
 			'success',
