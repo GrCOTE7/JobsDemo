@@ -21,7 +21,7 @@ class TestController extends Controller
 	{
 		$name0 = 'djkfghjsdghjsd.jpg';
 
-		$newName = "substr({$name0}, 0, -4)";
+		$newName = substr($name0, 0, -4);
 
 		Gc7::aff($newName);
 	}
