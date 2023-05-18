@@ -34,7 +34,7 @@
                 @guest
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="/admin/property" class="nav-link">Se connecter</a>
+                            <s><i><a href="/admin/property" class="nav-link">Se connecter</a></i></s>
                         </li>
                     </ul>
                 @endguest
