@@ -19,10 +19,9 @@ class TestController extends Controller
 
 	private function Gc7Test()
 	{
-		$name0 = 'djkfghjsdghjsd.jpg';
+		// $name0 = 'djkfghjsdghjsd.jpg';
+		// $newName = substr($name0, 0, -4);
 
-		$newName = substr($name0, 0, -4);
-
-		Gc7::aff($newName);
+		// Gc7::aff($newName);
 	}
 }
