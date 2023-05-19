@@ -14,3 +14,8 @@
     border-top: 2px solid red;
     border-right: 3px solid red;
 }
+
+b {
+    /* color: red; */
+    display: inline;
+}

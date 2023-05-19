@@ -17,7 +17,7 @@
         @endphp
 
         @forelse ($books as $book)
-            {{ $book->title }} de {{ $book->user->name }}<br>
+            <p><strong>{{ $book->title }}</strong> de <b>{{ $book->user->name }}</b></p>
         @empty
             No books
         @endforelse

@@ -22,7 +22,7 @@ class BookFactory extends Factory
 	public function definition(): array
 	{
 		return [
-			'title'   => substr(fake()->sentence, 0, -1),
+			'title'   => substr(fake()->sentence(3), 0, -1),
 			'user_id' => User::factory(),
 		];
 	}

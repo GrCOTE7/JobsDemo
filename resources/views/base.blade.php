@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     @vite(['./resources/css/app.min.css', './resources/js/app.min.js'])
-    {{-- <link rel="stylesheet" href="../../../css/app.min.css"> --}}
+    <link rel="stylesheet" href="../../../css/app.min.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
     @include('partials.nav')
 
     @include ('shared.flash')
-    
+
     @yield('content')
 
     <script src="../../../js/bootstrap530-a3.min.js"></script>
