@@ -20,9 +20,15 @@ $route = request()->route()->getName();
                 </li>
             </ul>
 
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a @class(['nav-link', 'active' => str_contains($route, 'books')]) aria-current="page" href="{{ route('books.index') }}">Books</a>
+                </li>
+            </ul>
+
             <div class="navbar-nav">
                 <div class="nav-item">
-                    <a @class(['nav-link', 'active' => str_contains($route, 'test')]) aria-current="page" href="{{ route('image.test') }}">Test</a>
+                    <a @class(['nav-link', 'active' => str_contains($route, 'test')]) aria-current="page" href="{{ route('test.index') }}">Test</a>
                 </div>
             </div>
             <div class="ms-auto">

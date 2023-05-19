@@ -27,6 +27,6 @@ Route::get('/books', [BookController::class, 'index'])->name('books.index');
 Route::get('/image', [ImageController::class, 'create'])->name('image.create');
 Route::post('/image', [ImageController::class, 'store']);
 
-Route::get('/test', [TestController::class, 'test'])->name('image.test');
+Route::get('/test', [TestController::class, 'test'])->name('test.index');
 
 require_once __DIR__ . '/auth.php';
