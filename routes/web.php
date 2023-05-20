@@ -22,16 +22,15 @@ Route::middleware('auth')->group(function () {
 	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route::get('/books', [BookController::class, 'index'])->name('books.index');
-
-Route::controller(BookController::class)->group(function () {
-	Route::get('/books', 'index')->name('books.index');
-	Route::get('/books/create', 'create')->name('books.create');
-	Route::post('/books', 'store')->name('books.store');
-	Route::get('/books/edit/{book}', 'edit')->name('books.edit');
-	Route::put('/books/{book}', 'update')->name('books.update');
-	Route::delete('/books/{book}', 'destroy')->name('books.destroy');
-});
+// Route::controller(BookController::class)->group(function () {
+// 	Route::get('/books', 'index')->name('books.index');
+// 	Route::get('/books/create', 'create')->name('books.create');
+// 	Route::post('/books', 'store')->name('books.store');
+// 	Route::get('/books/edit/{book}', 'edit')->name('books.edit');
+// 	Route::put('/books/{book}', 'update')->name('books.update');
+// 	Route::delete('/books/{book}', 'destroy')->name('books.destroy');
+// });
+Route::resource('books', BookController::class)->except(['show']);
 
 Route::get('/image', [ImageController::class, 'create'])->name('image.create');
 Route::post('/image', [ImageController::class, 'store']);
