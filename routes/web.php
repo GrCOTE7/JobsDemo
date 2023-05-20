@@ -10,7 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => view('welcome'));
+Route::get('/', fn () => view('welcome'))->name('home');
 
 Route::get('/dashboard', function () {
 	return view('dashboard');
@@ -22,7 +22,16 @@ Route::middleware('auth')->group(function () {
 	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/books', [BookController::class, 'index'])->name('books.index');
+// Route::get('/books', [BookController::class, 'index'])->name('books.index');
+
+Route::controller(BookController::class)->group(function () {
+	Route::get('/books', 'index')->name('books.index');
+	Route::get('/books/create', 'create')->name('books.create');
+	Route::post('/books', 'store')->name('books.store');
+	Route::get('/books/edit/{book}', 'edit')->name('books.edit');
+	Route::put('/books/{book}', 'update')->name('books.update');
+	Route::delete('/books/{book}', 'destroy')->name('books.destroy');
+});
 
 Route::get('/image', [ImageController::class, 'create'])->name('image.create');
 Route::post('/image', [ImageController::class, 'store']);

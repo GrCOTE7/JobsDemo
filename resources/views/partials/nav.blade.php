@@ -1,5 +1,8 @@
 @php
-$route = request()->route()->getName();
+    $uri = request()->getPathInfo();
+    $route = request()
+        ->route()
+        ->getName();
 @endphp
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
@@ -33,11 +36,11 @@ $route = request()->route()->getName();
             </div>
             <div class="ms-auto">
                 @auth
-                <div class="navbar-nav">
-                    <div class="nav-item">
-                        <a href="/dashboard" class="nav-link">Dashboard</a>
+                    <div class="navbar-nav">
+                        <div class="nav-item">
+                            <a href="/dashboard" class="nav-link">Dashboard</a>
+                        </div>
                     </div>
-                </div>
                 @endauth
 
                 @guest
@@ -52,3 +55,7 @@ $route = request()->route()->getName();
 
     </div>
 </nav>
+
+<div class="right" id='bloc'>
+    <b>{{ $uri }}</b> (<i>{{ $route }}</i>)
+</div>

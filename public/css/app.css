@@ -19,3 +19,12 @@ b {
     /* color: red; */
     display: inline;
 }
+
+.no-underline {
+    text-decoration: none !important;
+}
+
+.right {
+    text-align: right!important;
+    margin-right: 20px;
+}
