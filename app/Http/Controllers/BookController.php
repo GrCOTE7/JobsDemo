@@ -48,13 +48,6 @@ class BookController extends Controller
 	}
 
 	/**
-	 * Display the specified resource.
-	 */
-	public function show(string $id)
-	{
-	}
-
-	/**
 	 * Show the form for editing the specified resource.
 	 */
 	public function edit(Book $book)
@@ -83,6 +76,6 @@ class BookController extends Controller
 	{
 		$book->delete();
 
-		return redirect()->route('books.index')->with('success', 'Le livre ' . $book->id . ' a été supprimé avec succès.');
+		return to_route('books.index')->with('success', 'Le livre ' . $book->id . ' a été supprimé avec succès.');
 	}
 }

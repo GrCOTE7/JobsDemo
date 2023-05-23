@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', 'Books')
+@section('title', 'Add Books')
 
 @section('content')
 
