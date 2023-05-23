@@ -5,7 +5,7 @@ https://www.facebook.com/1459330199/videos/359506779588005/?idorvanity=724032344
 @finir:
 
 
-Laravel Jutsu: **Apprendre Laravel en 40 minutes ⏱️ !**
+X Laravel Jutsu: **Apprendre Laravel en 40 minutes ⏱️ !**
 https://www.youtube.com/watch?v=fekRpRMFwZ0
 
 
