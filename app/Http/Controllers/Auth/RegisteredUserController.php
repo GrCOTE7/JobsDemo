@@ -7,7 +7,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Jobs\SendWelcomeUserJob;
+use App\Jobs\SendWelcomeNewUserMailJob;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -49,7 +49,7 @@ class RegisteredUserController extends Controller
 
 		event(new Registered($user));
 
-		SendWelcomeUserJob::dispatch($user);
+		SendWelcomeNewUserMailJob::dispatch($user);
 
 		Auth::login($user);
 

@@ -4,11 +4,15 @@ https://www.facebook.com/1459330199/videos/359506779588005/?idorvanity=724032344
 
 @finir:
 
+
+Laravel Jutsu: **Apprendre Laravel en 40 minutes ⏱️ !**
 https://www.youtube.com/watch?v=fekRpRMFwZ0
 
 
+GA: **Tutoriel Laravel : Les files d'attente**
 https://www.youtube.com/watch?v=_tP1WXgPSRk
 
+Nordcoder: **Les jobs**
 https://www.youtube.com/watch?v=lcdc1dUA8F8
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>

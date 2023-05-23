@@ -44,7 +44,7 @@ class ImageController extends Controller implements ShouldQueue
 
 		// dd("/{strstr({$file->getBasename}(),-4)}_{$format}x{$format}.jpg");
 
-		// sleep(7);
+		sleep(7);
 
 		// $this->dispatch(new ResizeImage($uploadedFile, $formats));
 		$this->result = new ResizeImage($uploadedFile, $formats);
@@ -53,10 +53,5 @@ class ImageController extends Controller implements ShouldQueue
 			'success',
 			'The image was saved in different formats'
 		);
-
-		// return redirect()->route('image.create')->with(
-		// 	'success',
-		// 	'The image was saved in different formats'
-		// );
 	}
 }

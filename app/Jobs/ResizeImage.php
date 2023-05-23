@@ -32,7 +32,7 @@ class ResizeImage implements ShouldQueue
 	{
 		$this->uploadedFile = $uploadedFile;
 		$this->formats      = $formats;
-	}
+	} 
 
 	/**
 	 * Execute the job.

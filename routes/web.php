@@ -10,7 +10,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => view('welcome'))->name('home');
+// Route::get('/', fn () => view('welcome'))->name('home');
+Route::view('/', 'welcome')->name('home');
 
 Route::get('/dashboard', function () {
 	return view('dashboard');

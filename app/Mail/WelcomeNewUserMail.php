@@ -12,7 +12,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class WelcomeUserMail extends Mailable
+class WelcomeNewUserMail extends Mailable
 {
 	use Queueable;
 	use SerializesModels;
@@ -30,7 +30,7 @@ class WelcomeUserMail extends Mailable
 	public function envelope(): Envelope
 	{
 		return new Envelope(
-			subject: 'Welcome User Mail ' . $this->name,
+			subject: 'Welcome New User Mail ' . $this->name,
 		);
 	}
 
