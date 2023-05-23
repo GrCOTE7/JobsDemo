@@ -6,7 +6,7 @@
 
 namespace App\Jobs;
 
-use App\Mail\WelcomeNewUserMail;
+use App\Mail\WelcomeLoginUserMail;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,7 +15,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
-class SendWelcomeNewUserMailJob implements ShouldQueue
+class SendLoggedUserMailJob implements ShouldQueue
 {
 	use Dispatchable;
 	use InteractsWithQueue;
@@ -39,6 +39,6 @@ class SendWelcomeNewUserMailJob implements ShouldQueue
 	{
 		sleep(7);
 		// envoi d'un email de bienvenue à l'utilisateur
-		Mail::to($this->user->email)->send(new WelcomeNewUserMail($this->user->name));
+		Mail::to($this->user->email)->send(new WelcomeLoginUserMail($this->user->name));
 	}
 }
