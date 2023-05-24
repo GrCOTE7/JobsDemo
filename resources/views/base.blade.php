@@ -20,7 +20,10 @@
 
     @include ('shared.flash')
 
-    @yield('content')
+    <div id="app">
+        @yield('content')
+    </div>
+
 
     <script src="../../../js/bootstrap530-a3.min.js"></script>
 
