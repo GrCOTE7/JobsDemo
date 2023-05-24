@@ -19,6 +19,12 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a @class(['nav-link', 'active' => str_contains($route, 'users')]) aria-current="page" href="{{ route('users.index') }}">Users</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
                     <a @class(['nav-link', 'active' => str_contains($route, 'image')]) aria-current="page" href="{{ route('image.create') }}">Image</a>
                 </li>
             </ul>

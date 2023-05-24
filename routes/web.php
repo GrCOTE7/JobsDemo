@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
 // 	Route::put('/books/{book}', 'update')->name('books.update');
 // 	Route::delete('/books/{book}', 'destroy')->name('books.destroy');
 // });
+Route::view('/users', 'users.index')->name('users.index');
+
 Route::resource('books', BookController::class)->except(['show']);
 
 Route::get('/image', [ImageController::class, 'create'])->name('image.create');
