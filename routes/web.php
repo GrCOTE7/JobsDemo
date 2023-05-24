@@ -8,6 +8,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\UsersListController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', fn () => view('welcome'))->name('home');
@@ -23,6 +24,8 @@ Route::middleware('auth')->group(function () {
 	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/users', UsersListController::class)->name('users.index');
+
 // Route::controller(BookController::class)->group(function () {
 // 	Route::get('/books', 'index')->name('books.index');
 // 	Route::get('/books/create', 'create')->name('books.create');
@@ -31,8 +34,6 @@ Route::middleware('auth')->group(function () {
 // 	Route::put('/books/{book}', 'update')->name('books.update');
 // 	Route::delete('/books/{book}', 'destroy')->name('books.destroy');
 // });
-Route::view('/users', 'users.index')->name('users.index');
-
 Route::resource('books', BookController::class)->except(['show']);
 
 Route::get('/image', [ImageController::class, 'create'])->name('image.create');

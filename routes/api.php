@@ -1,7 +1,12 @@
 <?php
 
+/**
+ * (ɔ) GrCOTE7 - 2022-2023
+ */
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\User\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "api" middleware group. Make something great!
 |
-*/
+ */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+	return $request->user();
 });
+
+// route = user.index
+Route::get('/userslist', IndexController::class)->name('index');
