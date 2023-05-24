@@ -1,7 +1,6 @@
 <template>
-    <h2>Liste des utilisateurs</h2>
     <template v-for="user in users">
-        <p v-text="user.name"></p>
+        <p v-text="user.name" />
     </template>
 </template>
 
@@ -16,5 +15,3 @@ const loadFromServer = () => {
 };
 loadFromServer();
 </script>
-
-<style></style>

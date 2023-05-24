@@ -8,9 +8,11 @@ Alpine.start();
 
 import { createApp } from 'vue';
 import UsersList from './components/users/UsersList.vue';
+import UserCreate from './components/users/UserCreate.vue';
 
 const app = createApp({});
 
 app.component('usersList', UsersList);
+app.component('userCreate', UserCreate);
 
 app.mount('#app');

@@ -4,9 +4,10 @@
  * (ɔ) GrCOTE7 - 2022-2023
  */
 
+use App\Http\Controllers\Api\User\IndexController;
+use App\Http\Controllers\Api\User\StoreController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\User\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // route = user.index
 Route::get('/userslist', IndexController::class)->name('index');
+Route::post('/users', StoreController::class)->name('store');

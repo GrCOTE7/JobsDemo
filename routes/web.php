@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/users', UsersListController::class)->name('users.index');
+Route::view('/users/create', 'users.create')->name('users.create');
 
 // Route::controller(BookController::class)->group(function () {
 // 	Route::get('/books', 'index')->name('books.index');
