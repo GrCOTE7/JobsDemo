@@ -46,7 +46,8 @@
         </div>
 
         <div class="form-group">
-            <label for="password_confirmation">Confirmer le mot de passe:</label
+            <label for="password_confirmation"
+                >Confirmer le mot de passe:</label
             >
             <input
                 v-model="formData.password_confirmation"
@@ -58,7 +59,11 @@
             />
         </div>
 
-        <button type="button" class="btn btn-primary mt-3" @click="createUser">
+        <button
+            type="button"
+            class="btn btn-primary mt-3"
+            @click="createUserAction"
+        >
             Envoyer
         </button>
     </form>
@@ -66,9 +71,9 @@
 
 <script setup>
 import { ref } from "vue";
-import axios from "axios";
+import useUser from "../../composables/users/useUser";
 
-const errors = ref({});
+const { errors, createUser } = useUser();
 
 const formData = ref({
     name: "",
@@ -77,14 +82,7 @@ const formData = ref({
     password_confirmation: "",
 });
 
-const createUser = () => {
-    axios
-        .post("/api/users", formData.value)
-        .then((res) => {
-            errors.value = {};
-            console.log(res);
-            window.location.href = "/users";
-        })
-        .catch((err) => (errors.value = err.response.data.errors));
+const createUserAction = async () => {
+    await createUser(formData.value);
 };
 </script>
