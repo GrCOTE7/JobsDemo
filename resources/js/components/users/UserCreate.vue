@@ -10,8 +10,8 @@
                 placeholder="Entrez votre nom"
                 required
             />
-            <template v-if="errors.name"
-                ><span style="color: red" v-text="errors.name[0]" />
+            <template v-if="errors.name">
+                <span style="color: red" v-text="errors.name[0]" />
             </template>
         </div>
 
@@ -25,8 +25,8 @@
                 placeholder="Entrez votre e-mail"
                 required
             />
-            <template v-if="errors.email"
-                ><span style="color: red" v-text="errors.email[0]" />
+            <template v-if="errors.email">
+                <span style="color: red" v-text="errors.email[0]" />
             </template>
         </div>
 
@@ -40,14 +40,13 @@
                 placeholder="Entrez votre mot de passe"
                 required
             />
-            <template v-if="errors.password"
-                ><span style="color: red" v-text="errors.password[0]" />
+            <template v-if="errors.password">
+                <span style="color: red" v-text="errors.password[0]" />
             </template>
         </div>
 
         <div class="form-group">
-            <label for="password_confirmation"
-                >Confirmer le mot de passe:</label
+            <label for="password_confirmation">Confirmer le mot de passe:</label
             >
             <input
                 v-model="formData.password_confirmation"
@@ -84,7 +83,7 @@ const createUser = () => {
         .then((res) => {
             errors.value = {};
             console.log(res);
-            window.location.href='/users';
+            window.location.href = "/users";
         })
         .catch((err) => (errors.value = err.response.data.errors));
 };
