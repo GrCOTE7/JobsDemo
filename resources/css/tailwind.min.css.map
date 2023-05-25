@@ -1,8 +1,8 @@
 {
     "version": 3,
     "sources": [
-        "app.css"
+        "tailwind.css"
     ],
     "names": [],
-    "mappings": ""
+    "mappings": "AAAA,eACA,qBACA"
 }

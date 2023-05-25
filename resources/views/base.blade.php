@@ -9,9 +9,9 @@
     <link rel="shortcut icon" href="/img/favicon.ico" type="image/png">
     <link rel="icon" type="image/gif" href='/img/animated_favicon.gif'>
 
+    <link rel="stylesheet" href="../../../css/app.min.css">
     <link rel="stylesheet" href="../../../css/bootstrap.min.css">
     @vite(['./resources/css/app.min.css', './resources/js/app.min.js'])
-    <link rel="stylesheet" href="../../../css/app.min.css">
 </head>
 
 <body>
