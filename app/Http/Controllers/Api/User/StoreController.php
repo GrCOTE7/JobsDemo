@@ -9,6 +9,7 @@ namespace App\Http\Controllers\Api\User;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class StoreController extends Controller
 {
@@ -22,6 +23,8 @@ class StoreController extends Controller
 			'email'    => 'required|email|unique:users',
 			'password' => 'required|confirmed',
 		]);
+
+		$validated['password'] = Hash::make($validated['password']);
 
 		$user = User::create($validated);
 

@@ -62,10 +62,10 @@ class User extends Authenticatable
 		return $this->hasMany(Book::class);
 	}
 
-	protected function password(): Attribute
-	{
-		return Attribute::make(
-			set: static fn (string $value) => Hash::make($value)
-		);
-	}
+	// protected function password(): Attribute
+	// {
+	// 	return Attribute::make(
+	// 		set: static fn (string $value) => Hash::make($value)
+	// 	);
+	// }
 }

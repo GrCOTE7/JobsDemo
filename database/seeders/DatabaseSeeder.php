@@ -20,12 +20,12 @@ class DatabaseSeeder extends Seeder
 	{
 		// \App\Models\User::factory(10)->create();
 
+		Book::factory(6)->create('');
+
 		\App\Models\User::factory()->create([
 			'name'     => 'Gc7',
 			'email'    => 'gc7@test.com',
 			'password' => Hash::make('0000'),
 		]);
-
-		Book::factory(6)->create('');
 	}
 }
