@@ -11,7 +11,7 @@ import { ref } from "vue";
 const users = ref([]);
 const loadFromServer = () => {
     axios
-        .get("/api/userslist")
+        .get("/api/users")
         .then((res) => (users.value = res.data.data))
         .catch((err) => console.log(err));
 };

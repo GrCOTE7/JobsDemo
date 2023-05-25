@@ -25,5 +25,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // route = user.index
-Route::get('/userslist', IndexController::class)->name('index');
-Route::post('/users', StoreController::class)->name('store');
+
+Route::prefix('users')
+	->as('users.')
+	->group(function () {
+		Route::get('/', IndexController::class)->name('index');
+		Route::post('/', StoreController::class)->name('store');
+	});
