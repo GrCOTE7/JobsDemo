@@ -1,6 +1,8 @@
 <template>
     <template v-for="user in users">
-        <p v-text="user.name" />
+        <p>
+            <span v-text="user.id" /> - <span v-text="user.name" />
+        </p>
     </template>
 </template>
 

@@ -19,7 +19,7 @@ class IndexController extends Controller
 	public function __invoke(Request $request)
 	{
 		return new ResourceCollection(
-			resource: User::latest()->paginate(10)
+			resource: User::latest('id')->paginate(10)
 		);
 	}
 }
