@@ -5,7 +5,8 @@
         </p>
     </template>
 </template>
-<script setup>
+
+<script setup lang="ts">
 import { ref } from "vue";
 const users = ref([]);
 const loadFromServer = () => {
@@ -15,4 +16,5 @@ const loadFromServer = () => {
         .catch((err) => console.log(err));
 };
 loadFromServer();
+const pathName = window.location.pathname;
 </script>

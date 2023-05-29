@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed top-16 w-72">
+    <div class="fixed top-32 w-72">
       <Combobox v-model="selected">
         <div class="relative mt-1">
           <div
@@ -69,6 +69,7 @@
         </div>
       </Combobox>
     </div>
+    <br><br>
   </template>
 
   <script setup>
