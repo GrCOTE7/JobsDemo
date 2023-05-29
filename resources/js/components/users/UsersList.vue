@@ -1,5 +1,9 @@
 <template>
-    <users-select v-if="pathName === '/test' && users.length !== 0" />
+    <users-select
+        v-if="pathName === '/test' && users.length !== 0"
+        :users = "users"
+        class = "mb-3"
+    />
     <template v-for="user in users">
         <p>
             <span v-text="user.id" /> -
