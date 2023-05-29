@@ -11,6 +11,6 @@
             </button>
         </p>
 
-        <users-list-with-select />
+        <users-list />
     </div>
 @endsection
