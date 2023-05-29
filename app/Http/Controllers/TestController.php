@@ -14,7 +14,7 @@ class TestController extends Controller
 	{
 		$this->Gc7Test();
 
-		return view('test.index');
+		return view('gc7test.index');
 	}
 
 	private function Gc7Test()
