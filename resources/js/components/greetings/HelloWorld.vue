@@ -6,15 +6,15 @@ const fr = ref(6.55957);
 
 function round(num) {
     var m = Number((Math.abs(num) * 100).toPrecision(15));
-    return (Math.round(m) / 100) * Math.sign(num);
+    return ((Math.round(m) / 100) * Math.sign(num)).toFixed(2);
 }
 
-function setEuro(e, v = +e.target.value) {
+function setEuro(e, v = e.target.value) {
     euro.value = v;
     fr.value = round(v * 6.55957, 2);
 }
 
-function setFr(e, v = +e.target.value) {
+function setFr(e, v = e.target.value) {
     fr.value = v;
     euro.value = round(v / 6.55957, 2);
 }
@@ -29,7 +29,7 @@ function setFr(e, v = +e.target.value) {
                     type="number"
                     class="form-control"
                     :value="euro"
-                    @change="setEuro"
+                    @keyup="setEuro"
                 />
             </div>
             <div class="col">
@@ -38,7 +38,7 @@ function setFr(e, v = +e.target.value) {
                     type="number"
                     class="form-control"
                     :value="fr"
-                    @change="setFr"
+                    @keyup="setFr"
                 />
             </div>
         </div>
