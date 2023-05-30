@@ -2,7 +2,7 @@
 import {ref} from 'vue'
 import ChildComp from './ChildComp.vue'
 
-const greeting = ref('Hello du parent')
+const greeting = ref('Hello du parent (transmis à l\'enfant)')
 </script>
 
 <template>
