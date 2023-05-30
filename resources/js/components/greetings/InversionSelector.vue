@@ -7,8 +7,8 @@ const reverseByWords = ref(false);
 const msg = ref("Hello World !");
 
 function reverseMessage(reverseWords) {
-    let separator = reverseByWords ? true : false;
-    msg.value = msg.value.split("").reverse().join("");
+    let separator = reverseByWords.value ? ' ' : '';
+    msg.value = msg.value.split(separator).reverse().join(separator);
     console.log(reverseByWords.value);
 }
 
