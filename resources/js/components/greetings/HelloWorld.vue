@@ -1,59 +1,68 @@
 <!--
-Un simple éditeur markdown.
+Cet exemple récupère les derniers commits Vue.js depuis l'API de GitHub et les affiche sous forme de liste.
+Vous pouvez passer d'une branche à l'autre.
 -->
 
 <script setup>
-import { marked } from 'marked'
-import { debounce } from 'lodash-es'
-import { ref, computed } from 'vue'
+import { ref, watchEffect } from 'vue'
 
-const input = ref('# hello')
+const API_URL = `https://api.github.com/repos/vuejs/core/commits?per_page=3&sha=`
+const branches = ['main', 'v2-compat']
 
-const output = computed(() => marked(input.value))
+const currentBranch = ref(branches[0])
+const commits = ref(null)
 
-const update = debounce((e) => {
-  input.value = e.target.value
-}, 100)
+watchEffect(async () => {
+  // cet effet va être exécuté directement puis
+  // de nouveau chaque fois que currentBranch.value change
+  const url = `${API_URL}${currentBranch.value}`
+  commits.value = await (await fetch(url)).json()
+})
+
+function truncate(v) {
+  const newline = v.indexOf('\n')
+  return newline > 0 ? v.slice(0, newline) : v
+}
+
+function formatDate(v) {
+  return v.replace(/T|Z/g, ' ')
+}
 </script>
 
 <template>
-  <div class="editor">
-    <textarea class="input" :value="input" @input="update"></textarea>
-    <div class="output" v-html="output"></div>
-  </div>
+  <h1>Derniers commits de Vue Core</h1>
+  <template v-for="branch in branches">
+    <input type="radio"
+      :id="branch"
+      :value="branch"
+      name="branch"
+      v-model="currentBranch">
+    <label :for="branch">{{ branch }}</label>
+  </template>
+  <p>vuejs/vue@{{ currentBranch }}</p>
+  <ul>
+    <li v-for="{ html_url, sha, author, commit } in commits">
+      <a :href="html_url" target="_blank" class="commit">{{ sha.slice(0, 7) }}</a>
+      - <span class="message">{{ truncate(commit.message) }}</span><br>
+      by <span class="author">
+        <a :href="author.html_url" target="_blank">{{ commit.author.name }}</a>
+      </span>
+      at <span class="date">{{ formatDate(commit.author.date) }}</span>
+    </li>
+  </ul>
 </template>
 
 <style>
-body {
-  margin: 0;
+a {
+  text-decoration: none;
+  color: #42b883;
 }
-
-.editor {
-  height: 100vh;
-  display: flex;
+li {
+  line-height: 1.5em;
+  margin-bottom: 20px;
 }
-
-.input,
-.output {
-  overflow: auto;
-  width: 50%;
-  height: 100%;
-  box-sizing: border-box;
-  padding: 0 20px;
-}
-
-.input {
-  border: none;
-  border-right: 1px solid #ccc;
-  resize: none;
-  outline: none;
-  background-color: #f6f6f6;
-  font-size: 14px;
-  font-family: 'Monaco', courier, monospace;
-  padding: 20px;
-}
-
-code {
-  color: #f66;
+.author,
+.date {
+  font-weight: bold;
 }
 </style>
