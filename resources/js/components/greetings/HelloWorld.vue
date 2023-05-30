@@ -1,23 +1,62 @@
 <!--
-Les directives v-if et v-for permettent d'effectuer un rendu conditionnel ou dans une boucle.
+Nous pouvons créer des liaisons bidirectionnelles entre l'état et les champs de formulaire à l'aide de la directive v-model.
 -->
 
 <script setup>
 import { ref } from 'vue'
 
-const show = ref(true)
-const list = ref([1, 2, 3])
+const text = ref('Édite-moi')
+const checked = ref(true)
+const checkedNames = ref(['Jacques'])
+const picked = ref('Un')
+const selected = ref('A')
+const multiSelected = ref(['A'])
 </script>
 
 <template>
-  <button class="d-block btn btn-primary mb-2" @click="show = !show">Afficher / cacher la liste</button>
-  <button class="d-block btn btn-primary mb-2" @click="list.push(list.length + 1)">Ajouter un nombre à la fin</button>
-  <button class="d-block btn btn-primary mb-2" @click="list.pop()">Retirer le dernier nombre</button>
-  <button class="d-block btn btn-primary mb-2" @click="list.reverse()">Inverser la liste</button>
+  <h2>Champ Texte</h2>
+  <input v-model="text"> {{ text }}
 
-  <ul v-if="show && list.length">
-    <li v-for="item of list">{{ item }}</li>
-  </ul>
-  <p v-else-if="list.length">La liste n'est pas vide, mais cachée.</p>
-  <p v-else>La liste est vide.</p>
+  <h2>Case à cocher</h2>
+  <input type="checkbox" id="checkbox" v-model="checked">
+  <label for="checkbox">Cochée : {{ checked }}</label>
+
+  <!--
+    plusieurs cases à cocher peuvent être liées
+    au même v-model
+  -->
+  <h2>Cases à cocher multiples</h2>
+  <input type="checkbox" id="jacques" value="Jacques" v-model="checkedNames">
+  <label for="jacques">Jacques</label>
+  <input type="checkbox" id="jean" value="Jean" v-model="checkedNames">
+  <label for="jean">Jean</label>
+  <input type="checkbox" id="michel" value="Michel" v-model="checkedNames">
+  <label for="michel">Michel</label>
+  <p>Noms cochés : <pre>{{ checkedNames }}</pre></p>
+
+  <h2>Radio</h2>
+  <input type="radio" id="un" value="Un" v-model="picked">
+  <label for="un">Un</label>
+  <br>
+  <input type="radio" id="deux" value="Deux" v-model="picked">
+  <label for="deux">Deux</label>
+  <br>
+  <span>Choisi : {{ picked }}</span>
+
+  <h2>Sélection</h2>
+  <select v-model="selected">
+    <option disabled value="">Sélectionnez-en un</option>
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+  </select>
+  <span>Sélectionné : {{ selected }}</span>
+
+  <h2>Sélection multiple</h2>
+  <select v-model="multiSelected" multiple style="width:100px">
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+  </select>
+  <span>Sélectionné : {{ multiSelected }}</span>
 </template>
