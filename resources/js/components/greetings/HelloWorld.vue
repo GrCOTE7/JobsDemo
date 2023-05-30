@@ -25,12 +25,12 @@ function notify() {
     <h1 class="font-bold text-blue-500 text-3xl">{{ msg }}</h1>
 
     <div class="d-flex justify-content-start align-items-center">
-        <button class="btn btn-primary" @click="reverseMessage">
+        <button class="btn btn-primary font-semibold" @click="reverseMessage">
             Inverser le message
         </button>
 
-        <div class="ml-3 grow-1 d-flex align-items-center">
-            <span>Par lettres</span>
+        <div class="ml-3 grow-2 d-flex align-items-center">
+            <span :class="reverseByWords ? '':'font-bold'" class="w-20">Par lettres</span>
             <Switch
                 @click="otherMode"
                 v-model="reverseByWords"
@@ -44,11 +44,11 @@ function notify() {
                     class="pointer-events-none inline-block h-[34px] w-[34px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out"
                 />
             </Switch>
-            <span>Par mots</span>
+            <span :class="reverseByWords ? 'font-bold':''">Par mots</span>
         </div>
     </div>
 
-    <a href="https://vuejs.org" @click.prevent="notify">
+    <a href="https://vuejs.org" @click.prevent="notify" class="underline">
     Un lien avec e.preventDefault()
   </a>
 
