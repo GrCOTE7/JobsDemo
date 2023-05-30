@@ -1,61 +1,23 @@
 <!--
-Ici, nous lions de manière réactive les attributs / propriétés de l'élément à l'état.
-La syntaxe :title est un raccourci de v-bind:title.
+Les directives v-if et v-for permettent d'effectuer un rendu conditionnel ou dans une boucle.
 -->
 
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue'
 
-const message = ref("Hello World !");
-const isRed = ref(true);
-
-const colors = ref([
-    { id: 0, color: "blue" },
-    { id: 1, color: "red" },
-]);
-const color = ref("blue");
-
-const id = ref(1);
-function toggleRed() {
-    isRed.value ^= 1;
-}
-
-function toggleColor() {
-    id.value ^= 1;
-    color.value = colors.value[id.value].color;
-    console.log(color.value);
-}
+const show = ref(true)
+const list = ref([1, 2, 3])
 </script>
 
 <template>
-    <p>
-        <span :title="message">
-            Passez votre souris sur moi pendant quelques secondes pour voir mon
-            titre lié de manière dynamique !
-        </span>
-    </p>
+  <button class="d-block btn btn-primary mb-2" @click="show = !show">Afficher / cacher la liste</button>
+  <button class="d-block btn btn-primary mb-2" @click="list.push(list.length + 1)">Ajouter un nombre à la fin</button>
+  <button class="d-block btn btn-primary mb-2" @click="list.pop()">Retirer le dernier nombre</button>
+  <button class="d-block btn btn-primary mb-2" @click="list.reverse()">Inverser la liste</button>
 
-    <!--
-  les liaisons de classes ont une prise en charge spéciale pour les objets et les tableaux
-  en plus des chaînes de caractères simples
-  -->
-    <p :class="{ red: isRed }" @click="toggleRed">
-        Ceci devrait être rouge... mais cliquez sur moi pour le changer.
-    </p>
-
-    <!-- les liaisons de style prennent également en charge les objets et les tableaux
-    -->
-    <p :style="{ color }" @click="toggleColor">
-        Cela doit être bleu et alterner entre le rouge et le bleu lorsque l'on
-        clique dessus.
-    </p>
+  <ul v-if="show && list.length">
+    <li v-for="item of list">{{ item }}</li>
+  </ul>
+  <p v-else-if="list.length">La liste n'est pas vide, mais cachée.</p>
+  <p v-else>La liste est vide.</p>
 </template>
-
-<style>
-.red {
-    color: red;
-}
-.blue {
-    color: blue;
-}
-</style>
