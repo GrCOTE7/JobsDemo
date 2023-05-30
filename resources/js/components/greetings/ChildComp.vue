@@ -1,9 +1,14 @@
 <script setup>
 const props = defineProps({
-  msg: String
+  msgp: String
 })
+
+const emit = defineEmits(['response'])
+
+emit('response', 'Hello à partir de l\'enfant')
+
 </script>
 
 <template>
-  <h2>{{ msg || 'Aucune prop passée pour le moment' }}</h2>
+  <h2>{{ msgp || 'Aucune prop passée pour le moment' }}</h2>
 </template>
