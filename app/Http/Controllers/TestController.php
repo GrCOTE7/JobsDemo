@@ -17,6 +17,13 @@ class TestController extends Controller
 		return view('gc7test.index');
 	}
 
+	public function test2()
+	{
+		$this->Gc7Test();
+
+		return view('gc7test.index2');
+	}
+
 	private function Gc7Test()
 	{
 		// $name0 = 'djkfghjsdghjsd.jpg';
