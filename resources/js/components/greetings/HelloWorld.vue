@@ -1,62 +1,31 @@
 <!--
-Nous pouvons créer des liaisons bidirectionnelles entre l'état et les champs de formulaire à l'aide de la directive v-model.
+Voici le composant le plus simple possible, qui accepte une prop et la rend.
+Pour en savoir plus sur les composants, consultez le guide !
 -->
 
 <script setup>
 import { ref } from 'vue'
+import TodoItem from './TodoItem.vue'
 
-const text = ref('Édite-moi')
-const checked = ref(true)
-const checkedNames = ref(['Jacques'])
-const picked = ref('Un')
-const selected = ref('A')
-const multiSelected = ref(['A'])
+const groceryList = ref([
+  { id: 0, text: 'Légumes' },
+  { id: 1, text: 'Fromage' },
+  { id: 2, text: 'Toute autre chose comestible pour les humains' }
+])
 </script>
 
 <template>
-  <h2>Champ Texte</h2>
-  <input v-model="text"> {{ text }}
-
-  <h2>Case à cocher</h2>
-  <input type="checkbox" id="checkbox" v-model="checked">
-  <label for="checkbox">Cochée : {{ checked }}</label>
-
-  <!--
-    plusieurs cases à cocher peuvent être liées
-    au même v-model
-  -->
-  <h2>Cases à cocher multiples</h2>
-  <input type="checkbox" id="jacques" value="Jacques" v-model="checkedNames">
-  <label for="jacques">Jacques</label>
-  <input type="checkbox" id="jean" value="Jean" v-model="checkedNames">
-  <label for="jean">Jean</label>
-  <input type="checkbox" id="michel" value="Michel" v-model="checkedNames">
-  <label for="michel">Michel</label>
-  <p>Noms cochés : <pre>{{ checkedNames }}</pre></p>
-
-  <h2>Radio</h2>
-  <input type="radio" id="un" value="Un" v-model="picked">
-  <label for="un">Un</label>
-  <br>
-  <input type="radio" id="deux" value="Deux" v-model="picked">
-  <label for="deux">Deux</label>
-  <br>
-  <span>Choisi : {{ picked }}</span>
-
-  <h2>Sélection</h2>
-  <select v-model="selected">
-    <option disabled value="">Sélectionnez-en un</option>
-    <option>A</option>
-    <option>B</option>
-    <option>C</option>
-  </select>
-  <span>Sélectionné : {{ selected }}</span>
-
-  <h2>Sélection multiple</h2>
-  <select v-model="multiSelected" multiple style="width:100px">
-    <option>A</option>
-    <option>B</option>
-    <option>C</option>
-  </select>
-  <span>Sélectionné : {{ multiSelected }}</span>
+  <ol>
+    <!--
+      Nous fournissons à chaque todo-item l'objet todo
+      qu'il représente, afin que son contenu soit dynamique.
+      Nous devons également fournir à chaque composant une "key",
+      qui est abordée dans la section dédiée du guide sur v-for.
+    -->
+    <TodoItem
+      v-for="item in groceryList"
+      :todo="item"
+      :key="item.id"
+    ></TodoItem>
+  </ol>
 </template>
