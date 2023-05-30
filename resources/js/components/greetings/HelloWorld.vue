@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-const msg = "HelloWorld!";
+const msg = ref("HelloWorld!");
 </script>
 
 <template>
