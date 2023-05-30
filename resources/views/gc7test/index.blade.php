@@ -4,6 +4,6 @@
 
 @section('content')
     <div class="container" id="app">
-        
+        <hello-world />
     </div>
 @endsection
