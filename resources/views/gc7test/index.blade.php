@@ -4,10 +4,6 @@
 
 @section('content')
     <div class="container" id="app">
-        <inversion-selector />
-
-        <hr>
-
         <hello-world />
     </div>
 @endsection

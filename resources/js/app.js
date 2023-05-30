@@ -9,7 +9,8 @@ Alpine.start();
 import { createApp } from 'vue';
 
 import HelloWorld from './components/greetings/HelloWorld.vue';
-import InversionSelector from './components/greetings/InversionSelector.vue';
+
+// import InversionSelector from './components/greetings/InversionSelector.vue';
 
 // import UsersList from './components/users/UsersList.vue';
 // import UsersSelect from './components/users/UsersSelect.vue';
@@ -18,7 +19,8 @@ import InversionSelector from './components/greetings/InversionSelector.vue';
 const app = createApp({});
 
 app.component('helloWorld', HelloWorld);
-app.component('inversionSelector', InversionSelector);
+
+// app.component('inversionSelector', InversionSelector);
 
 // app.component('usersList', UsersList);
 // app.component('usersSelect', UsersSelect);
