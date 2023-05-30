@@ -12,6 +12,8 @@ https://www.youtube.com/watch?v=_tP1WXgPSRk
 Nordcoder: **Les jobs**
 https://www.youtube.com/watch?v=lcdc1dUA8F8
 
+Tuto Init Vue3
+https://fr.vuejs.org/tutorial/
 
 Bases VueJS (Bertand)
 https://www.youtube.com/watch?v=5sNXjRE1C-U

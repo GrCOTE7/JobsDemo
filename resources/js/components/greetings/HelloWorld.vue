@@ -1,18 +1,10 @@
 <script setup>
 import { ref } from "vue";
-import ChildComp from "./ChildComp.vue";
-
-const greeting = ref("Hello du parent (transmis à l'enfant)");
-
-const childMsg = ref("Pas encore de message de l'enfant");
+const msg = "HelloWorld!";
 </script>
 
 <template>
-    <ChildComp :msgp="greeting" @response="(msg) => (childMsg = msg)">
-        Il y a un slot
-    </ChildComp>
-    <hr />
-    {{ childMsg }}
+    <p class="font-bold text-blue-500">{{ msg }}</p>
 </template>
 
 <style scoped></style>
