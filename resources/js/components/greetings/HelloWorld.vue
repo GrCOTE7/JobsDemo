@@ -15,6 +15,10 @@ function reverseMessage(reverseWords) {
 function otherMode(){
     reverseByWords.value = !reverseByWords.value;
 }
+
+function notify() {
+  alert('la navigation a été empêchée.')
+}
 </script>
 
 <template>
@@ -43,6 +47,10 @@ function otherMode(){
             <span>Par mots</span>
         </div>
     </div>
+
+    <a href="https://vuejs.org" @click.prevent="notify">
+    Un lien avec e.preventDefault()
+  </a>
 
 </template>
 
