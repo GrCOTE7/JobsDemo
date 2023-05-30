@@ -1,31 +1,59 @@
 <!--
-Voici le composant le plus simple possible, qui accepte une prop et la rend.
-Pour en savoir plus sur les composants, consultez le guide !
+Un simple éditeur markdown.
 -->
 
 <script setup>
-import { ref } from 'vue'
-import TodoItem from './TodoItem.vue'
+import { marked } from 'marked'
+import { debounce } from 'lodash-es'
+import { ref, computed } from 'vue'
 
-const groceryList = ref([
-  { id: 0, text: 'Légumes' },
-  { id: 1, text: 'Fromage' },
-  { id: 2, text: 'Toute autre chose comestible pour les humains' }
-])
+const input = ref('# hello')
+
+const output = computed(() => marked(input.value))
+
+const update = debounce((e) => {
+  input.value = e.target.value
+}, 100)
 </script>
 
 <template>
-  <ol>
-    <!--
-      Nous fournissons à chaque todo-item l'objet todo
-      qu'il représente, afin que son contenu soit dynamique.
-      Nous devons également fournir à chaque composant une "key",
-      qui est abordée dans la section dédiée du guide sur v-for.
-    -->
-    <TodoItem
-      v-for="item in groceryList"
-      :todo="item"
-      :key="item.id"
-    ></TodoItem>
-  </ol>
+  <div class="editor">
+    <textarea class="input" :value="input" @input="update"></textarea>
+    <div class="output" v-html="output"></div>
+  </div>
 </template>
+
+<style>
+body {
+  margin: 0;
+}
+
+.editor {
+  height: 100vh;
+  display: flex;
+}
+
+.input,
+.output {
+  overflow: auto;
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+.input {
+  border: none;
+  border-right: 1px solid #ccc;
+  resize: none;
+  outline: none;
+  background-color: #f6f6f6;
+  font-size: 14px;
+  font-family: 'Monaco', courier, monospace;
+  padding: 20px;
+}
+
+code {
+  color: #f66;
+}
+</style>
