@@ -1,68 +1,46 @@
-<!--
-Cet exemple récupère les derniers commits Vue.js depuis l'API de GitHub et les affiche sous forme de liste.
-Vous pouvez passer d'une branche à l'autre.
--->
-
 <script setup>
-import { ref, watchEffect } from 'vue'
+import { ref } from "vue";
 
-const API_URL = `https://api.github.com/repos/vuejs/core/commits?per_page=3&sha=`
-const branches = ['main', 'v2-compat']
+const euro = ref(1);
+const fr = ref(6.55957);
 
-const currentBranch = ref(branches[0])
-const commits = ref(null)
-
-watchEffect(async () => {
-  // cet effet va être exécuté directement puis
-  // de nouveau chaque fois que currentBranch.value change
-  const url = `${API_URL}${currentBranch.value}`
-  commits.value = await (await fetch(url)).json()
-})
-
-function truncate(v) {
-  const newline = v.indexOf('\n')
-  return newline > 0 ? v.slice(0, newline) : v
+function round(num) {
+    var m = Number((Math.abs(num) * 100).toPrecision(15));
+    return (Math.round(m) / 100) * Math.sign(num);
 }
 
-function formatDate(v) {
-  return v.replace(/T|Z/g, ' ')
+function setEuro(e, v = +e.target.value) {
+    euro.value = v;
+    fr.value = round(v * 6.55957, 2);
+}
+
+function setFr(e, v = +e.target.value) {
+    fr.value = v;
+    euro.value = round(v / 6.55957, 2);
 }
 </script>
 
 <template>
-  <h1>Derniers commits de Vue Core</h1>
-  <template v-for="branch in branches">
-    <input type="radio"
-      :id="branch"
-      :value="branch"
-      name="branch"
-      v-model="currentBranch">
-    <label :for="branch">{{ branch }}</label>
-  </template>
-  <p>vuejs/vue@{{ currentBranch }}</p>
-  <ul>
-    <li v-for="{ html_url, sha, author, commit } in commits">
-      <a :href="html_url" target="_blank" class="commit">{{ sha.slice(0, 7) }}</a>
-      - <span class="message">{{ truncate(commit.message) }}</span><br>
-      by <span class="author">
-        <a :href="author.html_url" target="_blank">{{ commit.author.name }}</a>
-      </span>
-      at <span class="date">{{ formatDate(commit.author.date) }}</span>
-    </li>
-  </ul>
+    <form>
+        <div class="row">
+            <div class="col">
+                <label for="euro">€uros</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    :value="euro"
+                    @change="setEuro"
+                />
+            </div>
+            <div class="col">
+                <label for="fr">Francs</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    :value="fr"
+                    @change="setFr"
+                />
+            </div>
+        </div>
+    </form>
 </template>
-
-<style>
-a {
-  text-decoration: none;
-  color: #42b883;
-}
-li {
-  line-height: 1.5em;
-  margin-bottom: 20px;
-}
-.author,
-.date {
-  font-weight: bold;
-}
-</style>
