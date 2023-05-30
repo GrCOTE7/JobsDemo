@@ -1,6 +1,3 @@
-https://www.facebook.com/1459330199/videos/359506779588005/?idorvanity=724032344363324
-
-
 
 @finir:
 
@@ -14,6 +11,10 @@ https://www.youtube.com/watch?v=_tP1WXgPSRk
 
 Nordcoder: **Les jobs**
 https://www.youtube.com/watch?v=lcdc1dUA8F8
+
+
+Bases VueJS (Bertand)
+https://www.youtube.com/watch?v=5sNXjRE1C-U
 
 VueJS 3 - I:
 https://www.youtube.com/watch?v=DcEkrjdQW-8
@@ -31,6 +32,16 @@ TS:
 ```
 tsc hero.ts --watch
 ```
+
+ToDo
+
+https://www.youtube.com/watch?v=376vZ1wNYPA&list=PLFHz2csJcgk98RlS3y7ixAhIsUgTjGHIc
+
+https://www.youtube.com/watch?v=gDJjQ02dytU&list=PLFHz2csJcgk-uM0GcLtuZxN8Myl5Ui1Zf
+
+https://www.youtube.com/playlist?list=PLFHz2csJcgk_2RiKSuDP2MqfcFYpl8t9W
+
+
 
 ----
 
