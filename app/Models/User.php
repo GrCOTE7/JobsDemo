@@ -62,6 +62,11 @@ class User extends Authenticatable
 		return $this->hasMany(Book::class);
 	}
 
+	// /**
+	//  * The attributes that should be cast.
+	//  *
+	//  * @return Attribute<never-return, String>
+	//  */
 	// protected function password(): Attribute
 	// {
 	// 	return Attribute::make(

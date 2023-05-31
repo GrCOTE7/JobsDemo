@@ -7,19 +7,17 @@
 namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\UserCollection;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class ShowController extends Controller
 {
 	/**
 	 * Handle the incoming request.
 	 */
-	public function __invoke(Request $request): UserCollection
+	public function __invoke(User $user): UserResource
 	{
-		return new UserCollection(
-			resource: User::latest('id')->paginate(10)
-		);
+		return UserResource::make($user);
 	}
 }

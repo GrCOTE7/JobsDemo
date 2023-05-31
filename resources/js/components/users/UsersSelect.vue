@@ -91,6 +91,10 @@ const props = defineProps<{
     users: Array<UserType>,
 }>();
 
+const emit = defineEmits<{
+  (e: 'update:modelValue', id: number): void
+}>();
+
 let selected = ref(props.users[0].id)
 let query = ref('')
 
