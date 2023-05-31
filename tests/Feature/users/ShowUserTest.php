@@ -7,29 +7,17 @@ declare(strict_types=1);
  */
 
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 
-use function Pest\Laravel\assertDatabaseCount;
-use function Pest\Laravel\post;
+use function Pest\Laravel\get;
 
-it('can create an user', function () {
-	post(
-		uri: route('api.users.store'),
-		data: [
-			'name'                  => $name     = fake()->name,
-			'email'                 => $email    = 'john@doe.fr',
-			'password'              => $password = 'password',
-			'password_confirmation' => $password,
-		]
-	)
-		->assertOk()
-		->assertJsonStructure(['success', 'user']);
+it('can show an user', function () {
+	$user = User::factory()->create();
 
-	assertDatabaseCount('users', 1);
+	get(route('api.users.show', $user))
+		->assertOk();
+})->only();
 
-	$user = User::first();
-
-	expect($user->name)->toEqual($name);
-	expect($user->email)->toEqual($email);
-	expect(Hash::check($password, $user->password))->toBeTrue();
-});
+it('can not show an user', function () {
+	get(route('api.users.show', 1))
+		->assertNotFound();
+})->only();
