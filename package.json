@@ -2,6 +2,7 @@
     "private": true,
     "scripts": {
         "dev": "vite",
+        "test": "test",
         "build": "vite build"
     },
     "devDependencies": {

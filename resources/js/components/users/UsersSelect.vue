@@ -48,7 +48,7 @@
                             <li
                                 class="relative cursor-default select-none py-2 pl-10 pr-4"
                                 :class="{
-                  'bg-teal-600 text-white': active,
+                  'bg-blue-600 text-white': active,
                   'text-gray-900': !active,
                 }"
                             >
