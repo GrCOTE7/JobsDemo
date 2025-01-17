@@ -41,5 +41,6 @@ Route::get('/image', [ImageController::class, 'create'])->name('image.create');
 Route::post('/image', [ImageController::class, 'store']);
 
 Route::get('/test', [TestController::class, 'test'])->name('test.index');
+Route::get('/test2', [TestController::class, 'test2'])->name('test.index2');
 
 require_once __DIR__ . '/auth.php';

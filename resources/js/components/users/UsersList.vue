@@ -1,6 +1,6 @@
 <template>
     <users-select
-        v-if="pathName === '/test' && users.length !== 0"
+        v-if="pathName === '/test2' && users.length !== 0"
         :users = "users"
         class = "mb-3"
     />

@@ -14,7 +14,16 @@ class TestController extends Controller
 	{
 		$this->Gc7Test();
 
-		return view('gc7test.index');
+        $var=123;
+
+		return view('gc7test.index', ['var'=> $var]);
+	}
+
+	public function test2()
+	{
+		$this->Gc7Test();
+
+		return view('gc7test.index2');
 	}
 
 	private function Gc7Test()
